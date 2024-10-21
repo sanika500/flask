@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request,redirect,url_for
 
-app=Flask()
+app=Flask(__name__)
 
 tasks = []
 
@@ -21,10 +21,11 @@ def delete_task(task_id):
         tasks.pop(task_id)
     return redirect(url_for('index'))
 
-@app.route('/edit/<int:task_id>'methods=['POST'])
+@app.route('/edit/<int:task_id>',methods=['POST','get'])
 def edit_task(task_id):
     if request.method=="POST":
-        tasks.pop(task_id)
+        update= request.form.get('update')
+        tasks.edit(task_id, update) 
     return redirect(url_for('index'))
 
 
