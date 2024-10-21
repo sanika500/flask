@@ -16,10 +16,17 @@ def add_task():
    return redirect(url_for('index'))
 
 @app.route('/delete/<int:task_id>')
-def delete_tassk(task_id):
+def delete_task(task_id):
     if 0 <=task_id <len(tasks):
         tasks.pop(task_id)
     return redirect(url_for('index'))
+
+@app.route('/edit/<int:task_id>'methods=['POST'])
+def edit_task(task_id):
+    if request.method=="POST":
+        tasks.pop(task_id)
+    return redirect(url_for('index'))
+
 
 if __name__=='__main__':
     app.run(debug=True)
