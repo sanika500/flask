@@ -3,28 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit TODO</title>
 </head>
 <body>
-
-    <form action="/edit" method="POST">
-       <input type="text" name="task" placeholder="enter a new task" required>
-       <button type="submit">Add</button> 
-        <button type="submit">edit</button> 
+    <h1>Edit TODO</h1>
+    <form action="" method="POST">
+        <input type="text" name="content" value="{{ todo.content }}" required>
+        <button type="submit">Update TODO</button>
     </form>
-
-    <ul>
-        {% for task in tasks %}
-        <li>
-            {{loop.index}}:{{task}}
-            <a href="{{ url_for('delete_task',task_id=loop.index0) }}">delete</a>
-            <a href="{{ url_for('edit_task',task_id=loop.index0) }}">edit</a>
-            
-
-        </li>
-        {% endfor %}
-    </ul>
-    
-
+    <a href="/">Cancel</a>
 </body>
 </html>
